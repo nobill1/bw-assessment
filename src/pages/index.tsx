@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from "next/image";
 import localFont from "next/font/local";
 import VictoryModal from '@/components/VictoryModal';
@@ -9,9 +9,22 @@ export default function Home() {
   const [currentImage, setCurrentImage] = useState('/0.webp');
   const [isAnimating, setIsAnimating] = useState(false);
   const [clickCounter, setClickCounter] = useState(0);
+  const [showVictoryModal, setShowVictoryModal] = useState(false);
 
   const images = ['/blur1.webp', '/blur2.webp', '/blur3.webp'];
   const finalImages = ['/1.webp', '/2.png', '/3.png'];
+
+  useEffect(() => {
+    let timeout: ReturnType<typeof setTimeout>;
+    if (currentImage === '/3.png') {
+      timeout = setTimeout(() => {
+        setShowVictoryModal(true);
+      }, 1200); // Delay of 1 seconds
+    } else {
+      setShowVictoryModal(false);
+    }
+    return () => clearTimeout(timeout);
+  }, [currentImage]);
 
   const handleClick = () => {
     if (isAnimating) return; // Prevent multiple clicks while animating
@@ -66,7 +79,7 @@ export default function Home() {
               priority
             />
           </div>
-          {currentImage == "/3.png" && <VictoryModal />}
+          {showVictoryModal && <VictoryModal />}
           <div className={`flex px-6 w-full h-auto ${isAnimating ? 'slide-up' : ''}`}>
             <Image
               src={currentImage}
