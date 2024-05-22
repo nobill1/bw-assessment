@@ -37,6 +37,7 @@ export default function Home() {
       className={`relative flex min-h-screen flex-col items-center justify-between md:justify-center ${myFont.className} bg-star-pattern bg-cover bg-center overflow-hidden`}
     >
       <div className="container mx-auto flex flex-col justify-center items-center gap-8 pt-20 md:pt-0 px-3 z-20 md:h-auto">
+        {/* game card */}
         <div className="relative flex bg-game-pattern bg-cover border-4 border-[#fe5071] rounded-3xl md:mx-auto">
           <div className="flex justify-evenly items-center absolute top-0 right-0 left-0 bottom-0">
             <Image
@@ -79,11 +80,13 @@ export default function Home() {
           </div>
         </div>
 
+        {/* buttons */}
         {currentImage == "/3.png" ? null : <button onClick={handleClick} className="self-center bg-[#fe5071] py-2 px-14 rounded-xl text-3xl lg:text-5xl animate-shrinkGrow">SPIN NOW</button>}
         {currentImage == "/3.png" && <a href='https://wvgconn.com/en/registration?' target='_blank' rel='noopener' className="self-center bg-[#fe5071] py-2 px-14 rounded-xl text-3xl lg:text-5xl animate-shrinkGrow">CLAIM NOW</a>}
       </div>
 
       <div className="flex relative translate-y-4 2xl:translate-y-0 justify-center md:absolute md:top-0 md:left-0 md:right-0 md:bottom-0 md:justify-between">
+        {/* small screen image disposition */}
         <div className="flex justify-stretch opacity-40 md:hidden">
           <div className="flex self-end translate-y-16 opacity-30">
             <Image
@@ -143,7 +146,7 @@ export default function Home() {
           </div>
         </div>
 
-        {/* large screen */}
+        {/* large screen image disposition */}
         <div className="container mx-auto flex justify-between xl:justify-evenly w-full self-stretch">
           <div className="relative md:flex flex-col justify-center items-center xl:-translate-x-20 hidden">
             <div className="absolute bottom-0 flex -translate-y-60 -translate-x-28 -rotate-12">
