@@ -34,10 +34,10 @@ export default function Home() {
   };
   return (
     <main
-      className={`relative flex min-h-screen flex-col items-center justify-between md:justify-center ${myFont.className} bg-star-pattern bg-cover bg-center`}
+      className={`relative flex min-h-screen flex-col items-center justify-between md:justify-center ${myFont.className} bg-star-pattern bg-cover bg-center overflow-hidden`}
     >
       <div className="container mx-auto flex flex-col justify-center items-center gap-8 pt-20 md:pt-0 px-3 z-20 md:h-auto">
-        <div className="relative flex bg-game-pattern bg-cover border-4 border-[#fe5071] rounded-3xl md:mx-auto">          
+        <div className="relative flex bg-game-pattern bg-cover border-4 border-[#fe5071] rounded-3xl md:mx-auto">
           <div className="flex justify-evenly items-center absolute top-0 right-0 left-0 bottom-0">
             <Image
               src="/game-seperator.png"
@@ -145,7 +145,43 @@ export default function Home() {
 
         {/* large screen */}
         <div className="container mx-auto flex justify-between xl:justify-evenly w-full self-stretch">
-          <div className="md:flex flex-col justify-center items-center xl:-translate-x-20 hidden">
+          <div className="relative md:flex flex-col justify-center items-center xl:-translate-x-20 hidden">
+            <div className="absolute bottom-0 flex -translate-y-60 -translate-x-28 -rotate-12">
+              <Image
+                src="/yellow.webp"
+                alt="yellow"
+                width={67}
+                height={67}
+                priority
+              />
+            </div>
+            <div className="absolute bottom-0 flex -translate-y-80 -translate-x-48 rotate-12">
+              <Image
+                src="/blue.webp"
+                alt="blue"
+                width={108}
+                height={108}
+                priority
+              />
+            </div>
+            <div className="absolute top-0 xl:top-64 flex translate-y-10 translate-x-32 scale-[75%] rotate-6">
+              <Image
+                src="/red.webp"
+                alt="red"
+                width={108}
+                height={108}
+                priority
+              />
+            </div>
+            <div className="absolute top-0 xl:top-64 flex self-end justify-end translate-y-24 -translate-x-36 rotate-6">
+              <Image
+                src="/green.webp"
+                alt="green"
+                width={54}
+                height={54}
+                priority
+              />
+            </div>
             <div className="flex self-end justify-end translate-y-[330px] -translate-x-28 opacity-40 ">
               <Image
                 src="/shield.webp"
@@ -175,6 +211,42 @@ export default function Home() {
             </div>
           </div>
           <div className="md:flex flex-col justify-center items-center xl:translate-x-20 -translate-y-9 hidden">
+            <div className="absolute top-0 xl:top-72 flex translate-y-32 translate-x-5 rotate-12 scale-[80%]">
+              <Image
+                src="/yellow.webp"
+                alt="yellow"
+                width={67}
+                height={67}
+                priority
+              />
+            </div>
+            <div className="absolute top flex -translate-y-72 -translate-x-48 scale-[80%] rotate-12">
+              <Image
+                src="/purple.webp"
+                alt="purple"
+                width={108}
+                height={108}
+                priority
+              />
+            </div>
+            <div className="absolute bottom-0 flex -translate-y-80 translate-x-48">
+              <Image
+                src="/red.webp"
+                alt="red"
+                width={108}
+                height={108}
+                priority
+              />
+            </div>
+            <div className="absolute bottom-0 flex -translate-y-52 translate-x-14 rotate-6">
+              <Image
+                src="/green.webp"
+                alt="green"
+                width={54}
+                height={54}
+                priority
+              />
+            </div>
             <div className="flex self-end justify-end translate-y-[450px] opacity-40">
               <Image
                 src="/star.webp"
