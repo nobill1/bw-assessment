@@ -35,7 +35,7 @@ export default function Home() {
     const interval = setInterval(() => {
       setCurrentImage(images[counter % images.length]);
       counter++;
-    }, 1000);
+    }, 250);
 
     setTimeout(() => {
       clearInterval(interval);
