@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import Image from "next/image";
 import localFont from "next/font/local";
+import VictoryModal from '@/components/VictoryModal';
 
 const myFont = localFont({ src: '../../public/nKKF-GM_FYFRJvXzVXaAPe97P1KHynJFP716qNl5yoKZiA.woff2' });
 
 export default function Home() {
   const [currentImage, setCurrentImage] = useState('/0.webp');
   const [isAnimating, setIsAnimating] = useState(false);
+  const [clickCounter, setClickCounter] = useState(0);
 
   const images = ['/blur1.webp', '/blur2.webp', '/blur3.webp'];
   const finalImages = ['/1.webp', '/2.png', '/3.png'];
@@ -24,7 +26,9 @@ export default function Home() {
 
     setTimeout(() => {
       clearInterval(interval);
-      setCurrentImage(finalImages[Math.floor(Math.random() * finalImages.length)]);
+      const finalImage = finalImages[clickCounter % finalImages.length];
+      setCurrentImage(finalImage);
+      setClickCounter(clickCounter + 1);
       setIsAnimating(false);
     }, 1500); // Run the animation for 1 second
   };
@@ -33,7 +37,7 @@ export default function Home() {
       className={`relative flex min-h-screen flex-col items-center justify-between md:justify-center ${myFont.className} bg-star-pattern bg-cover bg-center`}
     >
       <div className="container mx-auto flex flex-col justify-center items-center gap-8 pt-20 md:pt-0 px-3 z-20 md:h-auto">
-        <div className="relative flex bg-game-pattern bg-cover border-4 border-[#fe5071] rounded-3xl md:mx-auto">
+        <div className="relative flex bg-game-pattern bg-cover border-4 border-[#fe5071] rounded-3xl md:mx-auto">          
           <div className="flex justify-evenly items-center absolute top-0 right-0 left-0 bottom-0">
             <Image
               src="/game-seperator.png"
@@ -52,7 +56,7 @@ export default function Home() {
               priority
             />
           </div>
-          <div className="flex justify-center items-center absolute top-0 right-0 left-0 -translate-y-1/2 px-6">
+          <div className="flex justify-center items-center absolute top-0 right-0 left-0 -translate-y-1/2 px-6 z-20">
             <Image
               src="/vegasplus.webp"
               alt="vegasplus"
@@ -61,6 +65,7 @@ export default function Home() {
               priority
             />
           </div>
+          {currentImage == "/3.png" && <VictoryModal />}
           <div className={`flex px-6 w-full h-auto ${isAnimating ? 'slide-up' : ''}`}>
             <Image
               src={currentImage}
@@ -74,7 +79,8 @@ export default function Home() {
           </div>
         </div>
 
-        <button onClick={handleClick} className="self-center bg-[#fe5071] py-2 px-14 rounded-xl text-3xl lg:text-5xl animate-shrinkGrow">SPIN NOW</button>
+        {currentImage == "/3.png" ? null : <button onClick={handleClick} className="self-center bg-[#fe5071] py-2 px-14 rounded-xl text-3xl lg:text-5xl animate-shrinkGrow">SPIN NOW</button>}
+        {currentImage == "/3.png" && <a href='https://wvgconn.com/en/registration?' target='_blank' rel='noopener' className="self-center bg-[#fe5071] py-2 px-14 rounded-xl text-3xl lg:text-5xl animate-shrinkGrow">CLAIM NOW</a>}
       </div>
 
       <div className="flex relative translate-y-4 2xl:translate-y-0 justify-center md:absolute md:top-0 md:left-0 md:right-0 md:bottom-0 md:justify-between">
